@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
     //this will be a reference to the Dementor pre-fab in the Assets folder, NOT the hierarchy
     public GameObject enemyPrefab;
     public int spawnFrequency = 5;
-    public int maxEnemyCount = 5;
+    public int maxEnemyCount = 20;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
