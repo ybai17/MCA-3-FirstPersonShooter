@@ -4,6 +4,8 @@ using UnityEngine.UI;
 public class ShootProjectile : MonoBehaviour
 {
     [Header("Projectile Settings")]
+    public int maxAmmoCount = 20;
+    int currentAmmoCount;
     public GameObject defaultProjectile;
     public GameObject dementorProjectile;
     public GameObject crateProjectile;
@@ -12,6 +14,7 @@ public class ShootProjectile : MonoBehaviour
     public float bulletRange = 20;
 
     public AudioClip projectileSound;
+    public AudioClip noAmmoSound;
 
     [Header("Crosshair Settings")]
     public Image crosshairImage;
@@ -34,6 +37,8 @@ public class ShootProjectile : MonoBehaviour
             currentProjectile = defaultProjectile;
 
         UpdateCrosshairColor();
+
+        currentAmmoCount = maxAmmoCount;
     }
 
     // Update is called once per frame
@@ -55,19 +60,28 @@ public class ShootProjectile : MonoBehaviour
     void Shoot()
     {
         if (currentProjectile) {
-            GameObject spell = Instantiate(currentProjectile, transform.position + transform.forward, transform.rotation);
+            if (currentAmmoCount > 0) {
+                GameObject spell = Instantiate(currentProjectile, transform.position + transform.forward, transform.rotation);
 
-            Rigidbody rb = spell.GetComponent<Rigidbody>();
+                Rigidbody rb = spell.GetComponent<Rigidbody>();
 
-            if (rb) {
-                rb.AddForce(transform.forward * projectileSpeed, ForceMode.VelocityChange);
+                if (rb) {
+                    rb.AddForce(transform.forward * projectileSpeed, ForceMode.VelocityChange);
+                }
+
+                if (projectileSound) {
+                    AudioSource.PlayClipAtPoint(projectileSound, GameObject.FindGameObjectWithTag("Player").transform.position);
+                }
+
+                spell.transform.SetParent(transform);
+
+                currentAmmoCount -= 1;
+                GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().UpdateAmmoCount(currentAmmoCount);
+            } else {
+                if (noAmmoSound) {
+                    AudioSource.PlayClipAtPoint(noAmmoSound, GameObject.FindGameObjectWithTag("MainCamera").transform.position);
+                }
             }
-
-            if (projectileSound) {
-                AudioSource.PlayClipAtPoint(projectileSound, GameObject.FindGameObjectWithTag("Player").transform.position);
-            }
-
-            spell.transform.SetParent(transform);
         }
         
     }
