@@ -1,9 +1,7 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public Slider healthSlider;
     public int startingHealth = 100;
     private int currentHealth;
 
@@ -62,9 +60,6 @@ public class PlayerHealth : MonoBehaviour
 
     void UpdateHealthSlider()
     {
-        if (healthSlider)
-        {
-            healthSlider.value = currentHealth;
-        }
+        GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().UpdateHealthSlider(currentHealth);
     }
 }
