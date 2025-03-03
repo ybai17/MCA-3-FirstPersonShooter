@@ -122,3 +122,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cratePieces: {fileID: 1514456300899226, guid: 538169cbe159fea4da2e7874a0f55998, type: 3}
+  ammoPotion: {fileID: 1396780956966815885, guid: 90f288d5a99da304e94844757cd56772, type: 3}
+  quidditchChest: {fileID: 37600433976095517, guid: 2599fb35c21872447a22e8484b4015fd, type: 3}
