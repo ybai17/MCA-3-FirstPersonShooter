@@ -26,7 +26,7 @@ public class SpellLootBehavior : MonoBehaviour
                 if (lootGetSFX)
                     AudioSource.PlayClipAtPoint(lootGetSFX, transform.position);
                     
-                playerAmmo.addAmmo(chargeAmount);
+                playerAmmo.AddAmmo(chargeAmount);
                 Destroy(gameObject);
             }
         }

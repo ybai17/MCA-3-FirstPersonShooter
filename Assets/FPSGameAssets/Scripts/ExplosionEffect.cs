@@ -19,7 +19,7 @@ public class ExplosionEffect : MonoBehaviour
 
         foreach(Rigidbody rb in pieces) {
             rb.AddExplosionForce(explosionForce, transform.position, explosionRadius);
-            Debug.Log("BOOM: " + rb.name);
+            //Debug.Log("BOOM: " + rb.name);
         }
 
         // Debug.Log("RigidBodies: " + pieces.Length);

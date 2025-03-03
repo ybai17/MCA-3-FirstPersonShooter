@@ -133,7 +133,7 @@ public class ShootProjectile : MonoBehaviour
         currentCrosshairColor = currentProjectile.GetComponent<Renderer>().sharedMaterial.color;
     }
 
-    public void addAmmo(int amount)
+    public void AddAmmo(int amount)
     {
         currentAmmoCount += amount;
         currentAmmoCount = Mathf.Clamp(currentAmmoCount, 0, 20);
