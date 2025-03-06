@@ -43,4 +43,9 @@ public class EnemySpawner : MonoBehaviour
             Debug.Log("After yield: " + Time.time);
         }
     }
+
+    public void StopSpawning()
+    {
+        
+    }
 }
