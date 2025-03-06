@@ -23,7 +23,7 @@ public class ChestBehavior : MonoBehaviour
         if (collision.gameObject.CompareTag("Projectile") && collision.gameObject.name.Equals("DefaultProjectile(Clone)")) {
             animator.SetTrigger("open");
             transform.parent.GetChild(1).gameObject.SetActive(true);
-            
+            GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemySpawner>().StopAllCoroutines();
         }
     }
 }
