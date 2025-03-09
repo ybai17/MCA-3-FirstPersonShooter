@@ -47,7 +47,7 @@ public class DementorBehavior : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Projectile") || other.CompareTag("Shield")) {
+        if (other.CompareTag("Projectile") || other.CompareTag("Shield") || other.CompareTag("Bludger")) {
             DestroyDementor();
         } else if (other.CompareTag("Player")) {
             var playerHealth = other.transform.GetComponent<PlayerHealth>();

@@ -9,6 +9,8 @@ TagManager:
   - Shield
   - Destructable
   - UI
+  - Bludger
+  - EnemySpawner
   layers:
   - Default
   - TransparentFX
