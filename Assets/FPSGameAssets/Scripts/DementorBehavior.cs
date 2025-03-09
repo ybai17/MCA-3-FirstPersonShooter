@@ -47,7 +47,7 @@ public class DementorBehavior : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Projectile") || other.CompareTag("Shield") || other.CompareTag("Bludger")) {
+        if (other.CompareTag("Projectile") || other.CompareTag("Shield")) {
             DestroyDementor();
         } else if (other.CompareTag("Player")) {
             var playerHealth = other.transform.GetComponent<PlayerHealth>();
@@ -55,6 +55,10 @@ public class DementorBehavior : MonoBehaviour
             if (playerHealth) {
                 playerHealth.TakeDamage(damageValue);
             }
+        } else if (other.CompareTag("Bludger") || other.CompareTag("Quaffle")) {
+            //other.GetComponent<BallBehavior>().
+            Debug.Log("hitting BALL");
+            DestroyDementor();
         }
     }
 

@@ -28,7 +28,7 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnEnemies(float spawnInterval)
     {
-        Debug.Log("Before yield:" + Time.time);
+        //Debug.Log("Before yield:" + Time.time);
 
         while (true) {
 
@@ -40,7 +40,7 @@ public class EnemySpawner : MonoBehaviour
             }
             
             yield return new WaitForSeconds(spawnInterval);
-            Debug.Log("After yield: " + Time.time);
+            //Debug.Log("After yield: " + Time.time);
         }
     }
 }

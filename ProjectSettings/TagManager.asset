@@ -11,6 +11,7 @@ TagManager:
   - UI
   - Bludger
   - EnemySpawner
+  - Quaffle
   layers:
   - Default
   - TransparentFX

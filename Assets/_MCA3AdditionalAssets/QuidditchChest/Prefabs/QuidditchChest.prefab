@@ -244,6 +244,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Quaffle
       objectReference: {fileID: 0}
+    - target: {fileID: 7218229359257681227, guid: c649d205aeaa0184fbdeeec5daf1fe4e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -335,6 +339,10 @@ PrefabInstance:
     - target: {fileID: 4344016329434034501, guid: f60560cdf1c978447b41dd2fdb21692f, type: 3}
       propertyPath: m_Name
       value: Snitch
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344016329434034501, guid: f60560cdf1c978447b41dd2fdb21692f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5380249486166685544, guid: f60560cdf1c978447b41dd2fdb21692f, type: 3}
       propertyPath: m_LocalPosition.x
