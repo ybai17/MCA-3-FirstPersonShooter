@@ -32,9 +32,9 @@ public class BallBehavior : MonoBehaviour
     {
         if (chargesLeft > 0) {
             if (target) {
-                Vector3 targetDirection = Vector3.MoveTowards(transform.position, target.position, ballSpeed * Time.deltaTime);
-                //rb.AddForce(targetDirection * 100, ForceMode.VelocityChange);
-                transform.position = targetDirection;
+                Vector3 targetDirection = Vector3.MoveTowards(transform.position, target.position, ballSpeed).normalized;
+                rb.AddForce(targetDirection, ForceMode.VelocityChange);
+                //transform.position = targetDirection;
             } else {
                 target = PickTarget();
 
@@ -65,6 +65,8 @@ public class BallBehavior : MonoBehaviour
         }
 
         int rollTargetIndex = Random.Range(0, allDementors.Length);
+
+        Debug.Log(gameObject.name + " is targeting " + rollTargetIndex);
 
         return allDementors[rollTargetIndex].transform;
     }
