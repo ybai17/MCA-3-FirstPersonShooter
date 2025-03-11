@@ -57,7 +57,6 @@ public class DementorBehavior : MonoBehaviour
             }
         } else if (other.CompareTag("Bludger") || other.CompareTag("Quaffle")) {
             //other.GetComponent<BallBehavior>().
-            Debug.Log("hitting BALL");
             DestroyDementor();
         }
     }
