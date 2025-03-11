@@ -355,5 +355,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba15b54a531e4249be8b79e65ff02e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballSpeed: 5
+  ballSpeed: 10
   maxTargets: 5
