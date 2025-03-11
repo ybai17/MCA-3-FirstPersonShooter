@@ -32,9 +32,11 @@ public class BallBehavior : MonoBehaviour
     {
         if (chargesLeft > 0) {
             if (target) {
-                Vector3 targetDirection = Vector3.MoveTowards(transform.position, target.position, ballSpeed).normalized;
-                rb.AddForce(targetDirection, ForceMode.VelocityChange);
-                //transform.position = targetDirection;
+                Vector3 targetDirection = Vector3.MoveTowards(transform.position, target.position, ballSpeed * Time.deltaTime);
+                transform.position = targetDirection;
+
+                //Vector3 targetDirection = (target.position - transform.position).normalized;
+                //rb.AddForce(targetDirection * ballSpeed * 0.05f, ForceMode.VelocityChange);
             } else {
                 target = PickTarget();
 
