@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SnitchBehavior : MonoBehaviour
 {
@@ -20,6 +22,8 @@ public class SnitchBehavior : MonoBehaviour
     Vector3 risenTargetPosition;
     Vector3 approachingTargetPosition;
 
+    TMP_Text victoryText;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,6 +36,11 @@ public class SnitchBehavior : MonoBehaviour
         transform.rotation = transform.parent.gameObject.transform.rotation;
 
         target = GameObject.FindGameObjectWithTag("Player").transform;
+
+        if (!victoryText) {
+            victoryText = GameObject.FindGameObjectWithTag("UI").transform.GetChild(7).GetComponent<TMP_Text>();
+        }
+        victoryText.enabled = false;
 
         Debug.Log("SNITCH Target: " + target);
     }
@@ -86,5 +95,22 @@ public class SnitchBehavior : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, approachingTargetPosition, approachingSpeed * Time.deltaTime);
         }
         
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") || other.CompareTag("Projectile")) {
+            victoryText.text = "You Won!";
+            victoryText.color = Color.cyan;
+            victoryText.enabled = true;
+
+            Invoke("ReloadSameScene", 5);
+        }
+    }
+
+    void ReloadSameScene()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 }

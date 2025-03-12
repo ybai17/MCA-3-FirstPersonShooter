@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -7,12 +9,15 @@ public class PlayerHealth : MonoBehaviour
 
     public static bool IsAlive {get; private set;}
 
+    public TMP_Text losingText;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentHealth = startingHealth;
         IsAlive = true;
 
+        losingText.enabled = false;
         UpdateHealthSlider();
     }
 
@@ -56,10 +61,24 @@ public class PlayerHealth : MonoBehaviour
         }
 
         transform.Rotate(0, 0, -90, Space.Self);
+
+        losingText.text = "YOU DIED";
+        losingText.color = Color.red;
+        losingText.enabled = true;
+
+        Debug.Log("VICTORY TEXT: " + losingText.enabled);
+
+        Invoke("ReloadSameScene", 5);
     }
 
     void UpdateHealthSlider()
     {
         GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().UpdateHealthSlider(currentHealth);
+    }
+
+    void ReloadSameScene()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 }
